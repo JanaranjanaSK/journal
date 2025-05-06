@@ -11,7 +11,21 @@ connection();
 
 // middlewares
 app.use(express.json());
-app.use(cors({origin:"http://localhost:3000"}));
+
+
+
+
+const corsOptions = {
+  origin: "http://localhost:3001", // React frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+
+
+// Use CORS middleware
+app.use(cors(corsOptions));
 
 // routes
 app.use("/api/users", userRoutes);
